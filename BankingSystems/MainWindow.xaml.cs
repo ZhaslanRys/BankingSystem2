@@ -20,11 +20,10 @@ namespace BankingSystems
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Window window;
         public MainWindow()
         {
             InitializeComponent();
-            Content = new LoginPage(window);
+            Content = new LoginPage(this);
         }
     }
 }

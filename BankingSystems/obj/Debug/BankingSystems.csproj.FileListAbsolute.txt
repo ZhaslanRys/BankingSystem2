@@ -20,3 +20,27 @@ c:\users\рыспековж\documents\visual studio 2017\Projects\BankingSystem2
 c:\users\рыспековж\documents\visual studio 2017\Projects\BankingSystem2\BankingSystems\obj\Debug\RegisterPage.g.cs
 c:\users\рыспековж\documents\visual studio 2017\Projects\BankingSystem2\BankingSystems\obj\Debug\LoginPage.baml
 c:\users\рыспековж\documents\visual studio 2017\Projects\BankingSystem2\BankingSystems\obj\Debug\RegisterPage.baml
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\bin\Debug\BankingSystems.exe.config
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\bin\Debug\BankingSystems.exe
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\bin\Debug\BankingSystems.pdb
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\bin\Debug\EntityFramework.dll
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\bin\Debug\EntityFramework.xml
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems.csprojResolveAssemblyReference.cache
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\LoginPage.g.cs
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\MainWindow.g.cs
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\RegisterPage.g.cs
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\App.g.cs
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems_MarkupCompile.cache
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems_MarkupCompile.lref
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\LoginPage.baml
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\MainWindow.baml
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\RegisterPage.baml
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems.g.resources
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems.Properties.Resources.resources
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems.csproj.GenerateResource.Cache
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems.exe
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\BankingSystems.pdb
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\MainPage.g.cs
+C:\Users\РыспековЖ\Desktop\SystemBank\BankSystem\BankingSystems\obj\Debug\MainPage.baml

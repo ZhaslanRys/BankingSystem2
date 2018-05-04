@@ -35,7 +35,7 @@ namespace BankingSystems
                 user = context.Users.SingleOrDefault(u => u.Login == loginBox.Text && u.Password == passwordBox.Password);
                 if (user != null)
                 {
-                    //window.Content = new MainPage(window, user);
+                    window.Content = new MainPage(window, user);
                 }
                 else
                 {

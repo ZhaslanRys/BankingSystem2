@@ -31,14 +31,24 @@ namespace BankingSystems
         {
             using (var context = new UserContext())
             {
-                User user = new User() { FullName = fullNameBox.Text, Login = loginBox.Text, Password = passwordBox.Password, CreationDate = DateTime.Now };
-                context.Users.Add(user);
-                context.SaveChanges();
+                var login = context.Users.Where(u => u.Login == loginBox.Text);
+                if (login != null)
+                {
+                    User user = new User() { FullName = fullNameBox.Text, Login = loginBox.Text, Password = passwordBox.Password, CreationDate = DateTime.Now };
+                    context.Users.Add(user);
+                    context.SaveChanges();
 
-                int id = context.Users.SingleOrDefault(u => u.Login == loginBox.Text).Id;
-                Wallet wallet = new Wallet() {Count = 0, CourseType = "KZT", UserId = id };
-                context.Wallets.Add(wallet);
-                context.SaveChanges();
+                    int id = context.Users.SingleOrDefault(u => u.Login == loginBox.Text).Id;
+                    Wallet wallet = new Wallet() { Count = 0, CourseType = "KZT", UserId = id };
+                    context.Wallets.Add(wallet);
+                    context.SaveChanges();
+
+                    window.Content = new LoginPage(window);
+                }
+                else
+                {
+                    MessageBox.Show("Такой логин уже существует ведите другой логин!!!");
+                }
             }
         }
     }
