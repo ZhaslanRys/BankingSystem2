@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BankingSystems
 {
@@ -21,62 +23,78 @@ namespace BankingSystems
     public partial class MainPage : Page
     {
         public delegate void AccountStateHandler(string message);
+        public delegate void Result();
+
         AccountStateHandler _del;
         public void RegisterHandler(AccountStateHandler del)
         {
             _del = del;
         }
 
-
         private Window window;
         private User user;
         private Wallet wallet;
-        private int countMoney;
+
+        private string output;
+        private string replenish;
+
         public MainPage(Window window, User user)
         {
             InitializeComponent();
             this.window = window;
             this.user = user;
-            nameBlock.Text = user.FullName;
             using (var context = new UserContext())
             {
-                countMoney = context.Wallets.SingleOrDefault(w => w.UserId == user.Id).Count;
-                countManeys.Text = countMoney + " " + ;
+                wallet = context.Wallets.SingleOrDefault(w => w.UserId == user.Id);
+                nameBlock.Text = user.FullName;
+                countManeys.Text = wallet.Count + " " + wallet.CourseType;
             }
         }
 
         private void ReplenishButton_Click(object sender, RoutedEventArgs e)
         {
-            RegisterHandler(new AccountStateHandler(Show_Message));
-            using (var context = new UserContext())
-            {
-                countMoney += int.Parse(replenishBox.Text);
-
-                 if (_del != null)
-                    _del($"Сумма {replenishBox.Text} пополнино на счета");
-
-                 wallet = context.Wallets.SingleOrDefault(w => w.UserId == user.Id);
-                 wallet.Count = countMoney;
-                 context.Wallets.Add(wallet);
-                 context.SaveChanges();
-            }
+            replenish = replenishBox.Text;
+            Result result = new Result(Replenish);
+            IAsyncResult resultObj = result.BeginInvoke(null, null);
         }
-
         private void OutputButton_Click(object sender, RoutedEventArgs e)
         {
+            output = outputBox.Text;
+            Result result = new Result(Output);
+            IAsyncResult resultObj = result.BeginInvoke(null, null);
+        }
+
+        private void Replenish()
+        {
+            int countMoneyReplenish;
             RegisterHandler(new AccountStateHandler(Show_Message));
             using (var context = new UserContext())
             {
-                if (int.Parse(replenishBox.Text) <= countMoney)
+                int.TryParse(replenish, out countMoneyReplenish);
+                wallet.Count += countMoneyReplenish;
+
+                if (_del != null)
+                    _del($"Сумма {countMoneyReplenish} пополнино на счет");
+
+                context.Entry(wallet).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        private void Output()
+        {
+            int countMoneyOutput;
+            RegisterHandler(new AccountStateHandler(Show_Message));
+            using (var context = new UserContext())
+            {
+                int.TryParse(output, out countMoneyOutput);
+                if (countMoneyOutput <= wallet.Count)
                 {
-                    countMoney -= int.Parse(replenishBox.Text);
+                    wallet.Count -= countMoneyOutput;
 
                     if (_del != null)
-                        _del($"Сумма {replenishBox.Text} снято с счета");
+                        _del($"Сумма {countMoneyOutput} снято с счета");
 
-                    wallet = context.Wallets.SingleOrDefault(w => w.UserId == user.Id);
-                    wallet.Count = countMoney;
-                    context.Wallets.Add(wallet);
+                    context.Entry(wallet).State = EntityState.Modified;
                     context.SaveChanges();
                 }
                 else
@@ -91,11 +109,11 @@ namespace BankingSystems
         {
             replenishBox.Text = "";
         }
-
         private void outputBox_GotFocus(object sender, RoutedEventArgs e)
         {
             outputBox.Text = "";
         }
+
         private static void Show_Message(String message)
         {
             MessageBox.Show(message);

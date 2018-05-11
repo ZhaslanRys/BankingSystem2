@@ -22,6 +22,7 @@ namespace BankingSystems
     {
         private Window window;
         private User user;
+        private Wallet wallet;
         public LoginPage(Window window)
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace BankingSystems
             using (var context = new UserContext())
             {
                 user = context.Users.SingleOrDefault(u => u.Login == loginBox.Text && u.Password == passwordBox.Password);
+                
                 if (user != null)
                 {
                     window.Content = new MainPage(window, user);
